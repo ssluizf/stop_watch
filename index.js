@@ -6,8 +6,6 @@ function playToPause(event) {
     const watch = document.getElementById("watch").childNodes
     const saveDate = `${watch[0].innerHTML} ${watch[1].innerHTML}`.trim().split(' ').reverse()
     const start = Date.now();
-    
-    console.log(start)
 
     if (button.innerHTML == "play_arrow") {
         timer = setInterval(function() {

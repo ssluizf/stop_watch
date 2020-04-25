@@ -68,7 +68,7 @@ body > div {
 }
 
 h1 {
-    font-size: 9em;
+    font-size: 8em;
 }
 
 p {
@@ -91,4 +91,13 @@ p {
 .preloader-wrapper {
     z-index: 1;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 6em;
+    }
+    p {
+        font-size: 3em;
+    }
 }
