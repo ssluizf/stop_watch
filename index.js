@@ -1,13 +1,16 @@
 // Muitas coisas deixarão de funcionar devidamente se você mudar a ordem de precedência
 function playToPause(event) {
     const button = document.getElementById("play-pause").firstChild;
+    const buttonChecking = function() {
+        return button.innerHTML == "play_arrow"
+    }
+
     const target = event.currentTarget.classList;
-    
     const watch = document.getElementById("watch").childNodes
     const saveDate = `${watch[0].innerHTML} ${watch[1].innerHTML}`.trim().split(' ').reverse()
     const start = Date.now();
 
-    if (button.innerHTML == "play_arrow") {
+    if (buttonChecking()) {
         timer = setInterval(function() {
             const date = new Date(Date.UTC(0, 0, 0, saveDate[3] || 0, saveDate[2] || 0, saveDate[1] || 0, Date.now() + parseInt(`${saveDate[0]}0`) - start))
     
@@ -28,11 +31,11 @@ function playToPause(event) {
                 return ("00" + n).slice(-2)
             })}`.replace(/,/gi, ' ')
     
-            button.innerHTML == "play_arrow" ? clearInterval(timer) : ''
+            buttonChecking() ? clearInterval(timer) : ''
         }, 10)
     }
 
-    if (button.innerHTML == "play_arrow") {
+    if (buttonChecking()) {
         button.innerHTML = "pause";
         document.getElementById("reset").style.display = "none";
     } else {
@@ -45,6 +48,7 @@ function playToPause(event) {
 
 function reset() {
     const watch = document.getElementById("watch").childNodes
+    
     watch[0].innerHTML = ""
     watch[1].innerHTML = ""
 }
